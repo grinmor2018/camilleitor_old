@@ -1,6 +1,13 @@
 const mongoose = require('mongoose');
 
-const URI = 'mongodb://localhost/camillatormeandb';
+if(process.env.NODE_ENV !== 'production'){
+  require ('dotenv').config();
+}
+
+const URI = process.env.MONGODB_URI
+? process.env.MONGODB_URI
+:'mongodb://localhost/camillatormeandb';
+
 
 mongoose.connect(URI, {
     useNewUrlParser: true,
