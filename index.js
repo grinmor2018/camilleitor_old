@@ -12,7 +12,7 @@ app.set('port', process.env.PORT || 3000);
 //Middelwares
 app.use(morgan('dev'));
 app.use(express.json());
-app.use(cors({origin: 'http://localhost:4200'}));
+app.use(cors({origin: 'mongodb+srv://grinmor:putotauli@cluster0.mlial.azure.mongodb.net/camilleitorDB?retryWrites=true&w=majority'}));
 
 //Routes
 app.use('/api/tasks',require('./routes/tasks.routes'));
