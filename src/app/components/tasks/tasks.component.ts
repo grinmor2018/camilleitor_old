@@ -19,7 +19,7 @@ export class TasksComponent implements OnInit {
   oxigenList: boolean[] = [true, false];
   transportList: string[] = ['Camilla', 'A peu', 'Llit', 'Cadira'];
   estatList: string[][]= [['Demanat','red'], ['Portat','cyan'], ['Tornat','green']];
-  destinationList: string[] = ['R1', 'R2', 'TAC Tauli', 'TAC UDIAT'];
+  destinationList: string[] = ['RESO 1', 'RESO 2', 'TAC Tauli', 'TAC UDIAT', 'RX CENTRAL', 'RX UGCES'];
   roomList: string[] = [
     'T101',
     'T102',
