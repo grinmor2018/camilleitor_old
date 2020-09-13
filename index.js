@@ -12,7 +12,7 @@ app.set('port', process.env.PORT || 3000);
 //Middelwares
 app.use(morgan('dev'));
 app.use(express.json());
-app.use(cors({origin: 'http://localhost:4200'}));
+app.use(cors());
 
 //Routes
 app.use('/api/tasks',require('./routes/tasks.routes'));
