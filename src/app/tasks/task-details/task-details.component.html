@@ -1,0 +1,128 @@
+<div class="row" [hidden]="hiddenState">
+  <!--Show form-->
+  <div class="col s12">
+    <div class="card">
+      <div class="card-content">
+        <form #taskForm="ngForm" (ngSubmit)="addTask(taskForm)">
+          <input
+            type="hidden"
+            name="_id"
+            #_id="ngModel"
+            [(ngModel)]="taskService.selectedTask._id"
+          />
+          <div class="row">
+            <div class="input-field col s3">
+              <p><label>Room?</label></p>
+              <select
+                class="browser-default"
+                [(ngModel)]="taskService.selectedTask.room"
+                name="room"
+              >
+                <option *ngFor="let room of roomList">
+                  {{ room }}
+                </option>
+              </select>
+            </div>
+            <div class="input-field col s3">
+              <p><label>Name?</label></p>
+              <input
+                type="text"
+                name="name"
+                #name="ngModel"
+                [(ngModel)]="taskService.selectedTask.name"
+                placeholder="enter the name"
+              />
+            </div>
+            <div class="input-field col s3">
+              <p><label>Hour?</label></p>
+              <input
+                type="time"
+                name="hour"
+                #hour="ngModel"
+                [(ngModel)]="taskService.selectedTask.hour"
+                placeholder="enter hour"
+              />
+            </div>
+            <div class="input-field col s3">
+              <p><label>Transport?</label></p>
+              <select
+                class="browser-default"
+                [(ngModel)]="taskService.selectedTask.transport"
+                name="transport"
+              >
+                <option *ngFor="let transport of transportList">
+                  {{ transport }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s3">
+              <p><label>Destination?</label></p>
+              <select
+                class="browser-default"
+                [(ngModel)]="taskService.selectedTask.destination"
+                name="destination"
+              >
+                <option *ngFor="let destination of destinationList">
+                  {{ destination }}
+                </option>
+              </select>
+            </div>
+            <div class="input-field col s3">
+              <p><label>Estat?</label></p>
+              <select
+                class="browser-default"
+                [(ngModel)]="taskService.selectedTask.estat"
+                name="estat"
+              >
+                <option
+                  *ngFor="let estat of estatList"
+                  value="{{ estat[1] }}"
+                >
+                  {{ estat[0] }}
+                </option>
+              </select>
+            </div>
+            <div class="input-field col s3">
+              <div class="switch">
+                <p><label>Oxigen?</label></p>
+                <label>
+                  No
+                  <input
+                    type="checkbox"
+                    name="oxigen"
+                    #oxigen="ngModel"
+                    [(ngModel)]="taskService.selectedTask.oxigen"
+                    placeholder="enter oxigen"
+                  />
+                  <span class="lever"></span>
+                  Yes
+                </label>
+              </div>
+            </div>
+            <div class="input-field col s3">
+              <button class="btn right" style="margin-left: 2px">Save</button>
+              <button
+                class="btn right"
+                (click)="resetForm(taskForm)"
+                style="margin-left: 2px"
+              >
+                Clean
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row center" [hidden]="hiddenButton">
+  <button
+    class="btn-floating waves-effect waves-light blue"
+    (click)="editTask(taskForm)"
+    style="margin-left: 2px"
+  >
+    <i class="material-icons">add</i>
+  </button>
+</div>
