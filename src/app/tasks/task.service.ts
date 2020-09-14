@@ -6,6 +6,9 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 export class TaskService {
     private TasksUrl = '/api/tasks';
 
+    selectedTask: Task;
+    tasks: Task[];
+
     constructor (private http: HttpClient) {}
 
     // get("/api/tasks")

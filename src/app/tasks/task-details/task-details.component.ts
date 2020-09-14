@@ -19,9 +19,9 @@ export class TaskDetailsComponent {
   @Input()
   deleteHandler: Function;
 
-  constructor (private taskService: TaskService) {}
+  constructor (public taskService: TaskService) {}
 
-  createContact(task: Task) {
+  addTask(task: Task) {
     this.taskService.createTask(task).then((newTask: Task) => {
       this.createHandler(newTask);
     });
