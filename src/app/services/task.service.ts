@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Task } from '../models/task';
+//import { Http, Response } from '@angular/http';
 
 
 @Injectable({
@@ -11,7 +12,7 @@ export class TaskService {
   selectedOxigen:boolean;
   selectedTask: Task;
   tasks: Task[];
-  readonly URL_API = '/api/tasks';
+  readonly URL_API = 'http://localhost:3000/api/tasks';
 
   constructor(private http: HttpClient) {
     this.selectedTask = new Task();

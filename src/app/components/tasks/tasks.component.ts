@@ -16,7 +16,7 @@ declare var M: any;
 export class TasksComponent implements OnInit {
   selectedTransport: string;
 
-  oxigenList: boolean[] = [true, false];
+  oxigenList: boolean[];
   transportList: string[] = ['Camilla', 'A peu', 'Llit', 'Cadira'];
   estatList: string[][]= [['Demanat','red'], ['Portat','cyan'], ['Tornat','green']];
   destinationList: string[] = ['RESO 1', 'RESO 2', 'TAC Tauli', 'TAC UDIAT', 'RX CENTRAL', 'RX UGCES'];
@@ -24,6 +24,9 @@ export class TasksComponent implements OnInit {
     'T101',
     'T102',
     'T103',
+    'T104',
+    'T105',
+    'T106',
     'T201',
     'T301',
     'T401',
@@ -31,6 +34,8 @@ export class TasksComponent implements OnInit {
     'TPCC01',
     'TPCC11',
   ];
+  hiddenState:boolean = true;
+  hiddenButton:boolean =  !(this.hiddenState);
 
   constructor(public taskService: TaskService) {}
 
@@ -40,19 +45,24 @@ export class TasksComponent implements OnInit {
 
   addTask(form?: NgForm) {
     console.log(form.value);
+    this.hiddenState=false;
     if (form.value._id) {
       this.taskService.putTask(form.value).subscribe((res) => {
         this.resetForm(form);
         this.getTasks();
         M.toast({ html: 'Updated Successfully' });
+
       });
     } else {
       this.taskService.postTask(form.value).subscribe((res) => {
         this.getTasks();
         this.resetForm(form);
         M.toast({ html: 'Save successfully' });
+
       });
     }
+    this.hiddenState=true;
+    this.hiddenButton=false;
   }
 
   getTasks() {
@@ -63,6 +73,8 @@ export class TasksComponent implements OnInit {
 
   editTask(task: Task) {
     this.taskService.selectedTask = task;
+    this.hiddenState=false;
+    this.hiddenButton=true;
   }
 
   deleteTask(_id: string, form: NgForm) {

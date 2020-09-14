@@ -2,7 +2,7 @@ export class Task {
 
   constructor(_id ='', room = '', name='',
    hour='', transport='',
-   oxigen=false, destination='', estat=null)
+   oxigen= false, destination='', estat=[['Demanat', 'red']])
    {
     this._id = _id;
     this.room = room;
@@ -21,5 +21,5 @@ export class Task {
   transport: string;
   oxigen: boolean;
   destination: string;
-  estat: [string,string];
+  estat:string[][];
 }
